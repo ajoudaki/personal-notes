@@ -57,17 +57,30 @@
       color: #555;
       margin-top: 0.5rem;
     }
+
+    /* Responsive video container for local or embedded videos */
     .video-container {
-      text-align: center;
-      margin-top: 2rem;
+      position: relative;
+      width: 100%;
+      max-width: 640px; /* Optional max width */
+      margin: 2rem auto; /* Center it horizontally */
     }
-    .video-container iframe,
+    /* Force a 16:9 aspect ratio by padding the container */
+    .video-container::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; /* 16:9 ratio (9/16 = 0.5625 => 56.25%) */
+    }
+    /* Position the video absolutely to fill the container */
     .video-container video {
-      width: 80%;
-      max-width: 640px;
-      height: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: none;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: #000; /* fallback background color */
     }
 
     /* Simple link styling */
@@ -105,7 +118,6 @@
         Like geological strata, these layers remind us of the deep time and the wonders of nature’s artistry.
       </p>
 
-      <!-- Example: Adding multiple images with figure/figcaption -->
       <figure>
         <img src="images/amonite1.jpeg" alt="Iridescent ammonite fossil with vibrant red coloration">
         <figcaption>Radiant red layers shimmering under the light</figcaption>
@@ -146,22 +158,13 @@
         encased in a timeless piece of jewelry.
       </p>
 
-      <!-- Optional: Embed a video or slideshow if you have it -->
+      <!-- Local MP4 video embedded in a responsive container -->
       <div class="video-container">
-        <!-- If you have a local video, you could do:
-        <video controls poster="images/ammonite1.jpg">
-          <source src="videos/ammonite-clip.mp4" type="video/mp4">
-          Your browser does not support HTML5 video.
+        <video controls poster="images/amonite3.jpeg">
+          <source src="images/amonite1.mp4" type="video/mp4">
+          Your browser does not support the HTML5 video tag.
         </video>
-        -->
-        <!-- Example: YouTube embed (replace with your own link) -->
-        <iframe 
-          src="images/amonite1.mp4" 
-          title="Ammonite Inspiration Video" 
-          allowfullscreen>
-        </iframe>
       </div>
-
     </section>
 
   </main>
