@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open-Source Pipeline for Speaker Diarization, Speech Recognition, and LLM Fine-Tuning</title>
+</head>
+<body>
+    <h1>Open-Source Pipeline for Speaker Diarization, Speech Recognition, and LLM Fine-Tuning</h1>
+    
+    <p>Building a pipeline for <strong>speaker diarization</strong>, <strong>speech-to-text transcription</strong>, and <strong>LLM fine-tuning</strong> can be achieved entirely with open-source, offline-capable tools. Below, we outline each stage with recommended frameworks, models, and practices.</p>
+    
+    <h2>1. Speaker Diarization (Speaker Identification)</h2>
+    <p>To <strong>segment audio by speaker and label each segment with the correct person</strong>, consider these open-source libraries and models:</p>
+    <ul>
+        <li><strong><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/#:~:text=Pyannote">Pyannote.Audio</a></strong> (Python/PyTorch): A state-of-the-art toolkit for speaker diarization.</li>
+        <li><strong><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/#:~:text=NVIDIA%20NeMo">NVIDIA NeMo</a></strong> (Python/PyTorch): An open-source toolkit with a dedicated speaker diarization module.</li>
+        <li><strong><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/#:~:text=Kaldi">Kaldi</a></strong> (C++/Python bindings): A classic speech recognition toolkit that also supports diarization.</li>
+        <li><strong><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/#:~:text=SpeechBrain">SpeechBrain</a></strong> (Python/PyTorch): An all-in-one toolkit that includes recipes for speaker diarization and speaker verification.</li>
+    </ul>
+    
+    <h2>2. Speech-to-Text (ASR) Transcription</h2>
+    <p>After diarization, each speaker’s speech segments are transcribed to text. Recommended ASR tools include:</p>
+    <ul>
+        <li><strong><a href="https://openai.com/index/whisper/#:~:text=Introducing%20Whisper">OpenAI Whisper</a></strong> (Transformer encoder-decoder): A robust ASR model trained on 680,000 hours of audio.</li>
+        <li><strong><a href="https://huggingface.co/facebook/wav2vec2-base-960h">Facebook Wav2Vec 2.0</a></strong> (Encoder + CTC or Seq2Seq): A high-performing ASR approach.</li>
+        <li><strong><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/#:~:text=NVIDIA%20NeMo">NVIDIA NeMo ASR</a></strong>: Provides ASR models optimized for GPUs.</li>
+        <li><strong><a href="https://www.gladia.io/blog/thinking-of-using-open-source-whisper-asr-here-are-the-main-factors-to-consider">Kaldi/Vosk</a></strong>: Kaldi's ASR pipelines and Vosk's ready-to-use offline models.</li>
+    </ul>
+    
+    <h2>3. Fine-Tuning Language Models on Speaker Transcripts</h2>
+    <p>Fine-tuning LLMs on transcribed speech allows capturing individual speaking styles:</p>
+    <ul>
+        <li><strong><a href="https://huggingface.co/docs/transformers/v4.17.0/en/tasks/language_modeling">Hugging Face Transformers</a></strong>: Supports fine-tuning models like GPT-2, GPT-Neo, and GPT-J.</li>
+        <li><strong><a href="https://bigscience.huggingface.co/blog/bloom">BLOOM</a></strong>: A 176B-parameter multilingual transformer for multi-speaker text generation.</li>
+        <li><strong><a href="https://heidloff.net/article/efficient-fine-tuning-lora/">LoRA (Low-Rank Adaptation)</a></strong>: A parameter-efficient fine-tuning method for large models.</li>
+    </ul>
+    
+    <h2>4. Scalability and Efficiency Considerations</h2>
+    <p>When working with large-scale audio datasets (thousands of hours), consider the following optimizations:</p>
+    <ul>
+        <li><strong>Audio Chunking & Parallel Processing:</strong> Use voice activity detection (VAD) and parallel processing.</li>
+        <li><strong>Streaming & Memory Management:</strong> Utilize memory-efficient data loaders like Hugging Face’s <a href="https://huggingface.co/learn/nlp-course/en/chapter5/4">Datasets</a> library.</li>
+        <li><strong>Pretrained Models:</strong> Use pretrained ASR and LLMs whenever possible to reduce training time.</li>
+    </ul>
+    
+    <h2>References</h2>
+    <ul>
+        <li><a href="https://picovoice.ai/blog/top-speaker-diarization-apis-and-sdks/">Pyannote.audio, NVIDIA NeMo, Kaldi, SpeechBrain</a></li>
+        <li><a href="https://openai.com/index/whisper/">OpenAI Whisper</a></li>
+        <li><a href="https://huggingface.co/facebook/wav2vec2-base-960h">Wav2Vec 2.0</a></li>
+        <li><a href="https://bigscience.huggingface.co/blog/bloom">BLOOM</a></li>
+        <li><a href="https://huggingface.co/learn/nlp-course/en/chapter5/4">Hugging Face Datasets Streaming</a></li>
+    </ul>
+</body>
+</html>
